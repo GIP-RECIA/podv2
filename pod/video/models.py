@@ -570,16 +570,18 @@ class Video(models.Model):
     def get_thumbnail_url(self):
         request = None
         if self.thumbnail:
-            thumbnail_url = ''.join(
-                ['//',
-                 get_current_site(request).domain,
-                 self.thumbnail.file.url])
+            thumbnail_url = self.thumbnail.file.url
+#            thumbnail_url = ''.join(
+#               ['//',
+#               get_current_site(request).domain,
+#              self.thumbnail.file.url])
         else:
-            thumbnail_url = ''.join(
-                ['//',
-                 get_current_site(request).domain,
-                 settings.STATIC_URL,
-                 DEFAULT_THUMBNAIL])
+            thumbnail_url = ''.join([settings.STATIC_URL, DEFAULT_THUMBNAIL])
+#            thumbnail_url = ''.join(
+#                ['//',
+#                 get_current_site(request).domain,
+#                 settings.STATIC_URL,
+#                 DEFAULT_THUMBNAIL])
         return thumbnail_url
 
     def get_playlist_master(self):

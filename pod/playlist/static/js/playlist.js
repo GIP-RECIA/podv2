@@ -121,11 +121,15 @@ $(window).ready(function() {
 	});
 
 	$('.playlist-item').on('click', function() {
+	    var serviceName = $(this).attr('data-url');
 		var slug = $(this).attr('data-slug');
+		var terms =  window.location.href.split('/');
+		var videoIdx ;
+		for (videoIdx = 0; videoIdx < terms.length && terms[videoIdx++] !== 'video'; );
 		var jqxhr = $.ajax({
 			method: 'POST',
-			url: '/playlist/'+slug+'/',
-			data: {'action': 'add', 'video': window.location.href.split('/')[4], 'csrfmiddlewaretoken': $(this).parents('.dropdown-menu').find('input').val()},
+			url: serviceName+'playlist/'+slug+'/',
+			data: {'action': 'add', 'video': terms[videoIdx], 'csrfmiddlewaretoken': $(this).parents('.dropdown-menu').find('input').val()},
 			dataType: 'html'
 		});
 		jqxhr.done(function(data) {

@@ -4,6 +4,7 @@ from django.db.models import Count, Sum, Q
 from django.db.models import Prefetch
 from django.db.models.functions import Substr, Lower
 from datetime import timedelta
+from django.urls import reverse
 
 from pod.main.models import LinkFooter
 
@@ -126,7 +127,7 @@ def context_navbar(request):
 
     listowner = get_list_owner(owners)
 
-    LAST_VIDEOS = get_last_videos() if request.path == "/" else None
+    LAST_VIDEOS = get_last_videos() if request.path == reverse('POD')  else None
 
     list_videos = Video.objects.filter(
         encoding_in_progress=False,

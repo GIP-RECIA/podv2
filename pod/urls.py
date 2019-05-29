@@ -10,6 +10,7 @@ from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.views.i18n import JavaScriptCatalog
 from django.utils.translation import ugettext_lazy as _
+from django.contrib.flatpages.views import flatpage
 
 from pod.authentication.views import authentication_login
 from pod.authentication.views import authentication_logout
@@ -41,6 +42,7 @@ OEMBED = getattr(
     settings, 'OEMBED', False)
 
 urlpatterns = [
+    url(r'^$', flatpage, {'url': ''}, name='POD'),
     url(r'^admin/', admin.site.urls),
 
     # Translation

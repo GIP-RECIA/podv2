@@ -189,7 +189,7 @@ body {
             <i data-feather="check"></i>
           </li>
         {% else %}
-          <li class="dropdown-item playlist-item py-0" data-slug="{{playlist.slug}}">{{playlist.title}}</li>
+          <li class="dropdown-item playlist-item py-0" data-url="{% url 'POD' %}" data-slug="{{playlist.slug}}">{{playlist.title}}</li>
         {% endif %}
       {% endfor %}
       </ul>

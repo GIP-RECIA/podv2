@@ -54,7 +54,7 @@
 		        <nav aria-label="breadcrumb" class="breadcrumb d-flex justify-content-between p-0" id="mainbreadcrumb">
 		          <ol class="breadcrumb p-1 pl-4 mb-0">
 		          	{% block breadcrumbs %}
-		                <li class="breadcrumb-item"><a href="/">{% trans 'Home' %}</a></li>
+		<li class="breadcrumb-item"><a href="{% url 'POD' %}">{% trans 'Home' %}</a></li>
 					{% endblock breadcrumbs %}
 		          </ol>
 		          <div class="p-0">
