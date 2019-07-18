@@ -226,10 +226,11 @@ if 'USE_CAS' in globals() and eval('USE_CAS') is True:
         'django.contrib.auth.backends.ModelBackend',
         'django_cas.backends.CASBackend',
     )
-    CAS_RESPONSE_CALLBACKS = (
-        'pod.authentication.populatedCASbackend.populateUser',
-        # function call to add some information to user login by CAS
-    )
+    if not 'CAS_RESPONSE_CALLBACKS' in globals():
+        CAS_RESPONSE_CALLBACKS = (
+            'pod.authentication.populatedCASbackend.populateUser',
+            # function call to add some information to user login by CAS
+        )
     MIDDLEWARE.append('django_cas.middleware.CASMiddleware')
 
 
