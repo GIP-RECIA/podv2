@@ -52,7 +52,7 @@ def get_remove_selected_facet_link(request, selected_facets):
             link = request.get_full_path().replace("&selected_facets=%s" % facetEscaped, "").replace("selected_facets=%s" % facetEscaped, "")
             msg_title = _('Remove selection')
             remove_selected_facet += (
-                '&nbsp;<a href="%s" title="%s"> %s</a>&nbsp;' % (
+                '&nbsp;<a href="%s" title="%s"><i data-feather="x-circle"></i></a> %s &nbsp;' % (
                     link, msg_title, value))
     return remove_selected_facet
 
