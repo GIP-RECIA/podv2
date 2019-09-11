@@ -4,6 +4,7 @@ from pod.video_search.forms import SearchForm
 from django.conf import settings
 from pod.video.models import Video
 from django.utils.translation import ugettext_lazy as _
+from django.utils.encoding import escape_uri_path
 
 # import json
 
@@ -47,7 +48,8 @@ def get_remove_selected_facet_link(request, selected_facets):
     for facet in selected_facets:
         if ":" in facet:
             value = facet.split(":")[1]
-            link = request.get_full_path().replace("&selected_facets=%s" % facet, "").replace("selected_facets=%s" % facet, "")
+            facetEscaped =  escape_uri_path(facet)
+            link = request.get_full_path().replace("&selected_facets=%s" % facetEscaped, "").replace("selected_facets=%s" % facetEscaped, "")
             msg_title = _('Remove selection')
             remove_selected_facet += (
                 '&nbsp;<a href="%s" title="%s"> %s</a>&nbsp;' % (
